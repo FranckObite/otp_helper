@@ -172,106 +172,100 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: widget.backgroundColor,
-      body: SizedBox(
-        height: Get.height,
-        width: Get.width,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 100,
-            ),
-            Text(
-              "Vérifier le téléphone",
-              style: TextStyle(
-                  color: widget.primaryColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Le code a été envoyé à ",
-                  style: TextStyle(color: widget.accentColor, fontSize: 15),
-                ),
-                Text("+225 0757492578",
-                    style: TextStyle(color: widget.accentColor, fontSize: 15))
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Form(
-              key: _formKey,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  otpFieldCustomize(
-                      context, controller1, focusNode1, isEdited1),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  otpFieldCustomize(
-                      context, controller2, focusNode2, isEdited2),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  otpFieldCustomize(
-                      context, controller3, focusNode3, isEdited3),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  otpFieldCustomize(
-                      context, controller4, focusNode4, isEdited4),
-                ],
+    return Container(
+      color: widget.backgroundColor,
+      height: Get.height,
+      width: Get.width,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 100,
+          ),
+          Text(
+            "Vérifier le téléphone",
+            style: TextStyle(
+                color: widget.primaryColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Le code a été envoyé à ",
+                style: TextStyle(color: widget.accentColor, fontSize: 15),
               ),
-            ),
-            const Spacer(),
-            Row(
+              Text("+225 0757492578",
+                  style: TextStyle(color: widget.accentColor, fontSize: 15))
+            ],
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Form(
+            key: _formKey,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "vous n'avez pas reçu le code OTP ?",
-                  style: TextStyle(fontSize: 10, color: widget.accentColor),
+                otpFieldCustomize(context, controller1, focusNode1, isEdited1),
+                const SizedBox(
+                  width: 10,
                 ),
-                TextButton(
-                    onPressed: canResendCode ? () {} : null,
-                    child: canResendCode
-                        ? Text(
-                            "Renvoyer le code",
-                            style: TextStyle(
-                                fontSize: 15, color: widget.primaryColor),
-                          )
-                        : Row(children: [
-                            Text(
-                              "Veuillez attendre",
-                              style: TextStyle(
-                                  color: widget.accentColor, fontSize: 15),
-                            ),
-                            Text(" $timeLeft ",
-                                style: TextStyle(
-                                  color: widget.primaryColor,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                            Text(
-                              "s",
-                              style: TextStyle(
-                                  color: widget.accentColor, fontSize: 15),
-                            ),
-                          ]))
+                otpFieldCustomize(context, controller2, focusNode2, isEdited2),
+                const SizedBox(
+                  width: 10,
+                ),
+                otpFieldCustomize(context, controller3, focusNode3, isEdited3),
+                const SizedBox(
+                  width: 10,
+                ),
+                otpFieldCustomize(context, controller4, focusNode4, isEdited4),
               ],
             ),
-            const SizedBox(
-              height: 50,
-            )
-          ],
-        ),
+          ),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "vous n'avez pas reçu le code OTP ?",
+                style: TextStyle(fontSize: 10, color: widget.accentColor),
+              ),
+              TextButton(
+                  onPressed: canResendCode ? () {} : null,
+                  child: canResendCode
+                      ? Text(
+                          "Renvoyer le code",
+                          style: TextStyle(
+                              fontSize: 15, color: widget.primaryColor),
+                        )
+                      : Row(children: [
+                          Text(
+                            "Veuillez attendre",
+                            style: TextStyle(
+                                color: widget.accentColor, fontSize: 15),
+                          ),
+                          Text(" $timeLeft ",
+                              style: TextStyle(
+                                color: widget.primaryColor,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              )),
+                          Text(
+                            "s",
+                            style: TextStyle(
+                                color: widget.accentColor, fontSize: 15),
+                          ),
+                        ]))
+            ],
+          ),
+          const SizedBox(
+            height: 50,
+          )
+        ],
       ),
     );
   }
