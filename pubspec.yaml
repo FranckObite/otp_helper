@@ -1,5 +1,5 @@
 name: otp_helper
-description: "A new Flutter package project."
+description: "Package that makes it easy to integrate a One-Time Password (OTP) verification page into your app."
 version: 0.0.1
 homepage: https://github.com/FranckObite/otp_helper
 
@@ -22,9 +22,8 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+#flutter: 
 # The following section is specific to Flutter packages.
-flutter:
 
   # To add assets to your package, add an assets section, like this:
   # assets:

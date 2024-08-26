@@ -14,14 +14,19 @@ class OtpPage extends StatefulWidget {
       required this.primaryColor,
       required this.secondaryColor,
       required this.onOtpValidated,
-      required this.accentColor});
+      required this.accentColor,
+      required this.resendCode,
+      required this.localization,
+      required this.phoneNumber}); // Ajouter le paramètre phoneNumber
 
   final Color backgroundColor;
   final Color primaryColor;
   final Color secondaryColor;
   final Color accentColor;
-  final Function(String)
-      onOtpValidated; // Fonction de rappel pour la validation de l'OTP
+  final Function(String) onOtpValidated; // Fonction de rappel pour la validation de l'OTP
+  final void Function() resendCode;
+  final Map<String, String> localization; // Map pour les traductions
+  final String phoneNumber; // Numéro de téléphone
 
   @override
   State<OtpPage> createState() => _OtpPageState();
@@ -182,7 +187,7 @@ class _OtpPageState extends State<OtpPage> {
             height: 100,
           ),
           Text(
-            "Vérifier le téléphone",
+            widget.localization['verify_phone'] ?? 'Verify Phone',
             style: TextStyle(
                 color: widget.primaryColor,
                 fontSize: 20,
@@ -195,10 +200,10 @@ class _OtpPageState extends State<OtpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Le code a été envoyé à ",
+                widget.localization['code_sent_to'] ?? 'The code has been sent to ',
                 style: TextStyle(color: widget.accentColor, fontSize: 15),
               ),
-              Text("+225 0757492578",
+              Text(widget.phoneNumber,
                   style: TextStyle(color: widget.accentColor, fontSize: 15))
             ],
           ),
@@ -231,20 +236,20 @@ class _OtpPageState extends State<OtpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "vous n'avez pas reçu le code OTP ?",
+                widget.localization['resend_code'] ?? 'Didn\'t receive the OTP code?',
                 style: TextStyle(fontSize: 10, color: widget.accentColor),
               ),
               TextButton(
-                  onPressed: canResendCode ? () {} : null,
+                  onPressed: canResendCode ? widget.resendCode : null,
                   child: canResendCode
                       ? Text(
-                          "Renvoyer le code",
+                          widget.localization['resend_button'] ?? 'Resend Code',
                           style: TextStyle(
                               fontSize: 15, color: widget.primaryColor),
                         )
                       : Row(children: [
                           Text(
-                            "Veuillez attendre",
+                            widget.localization['wait_message'] ?? 'Please wait',
                             style: TextStyle(
                                 color: widget.accentColor, fontSize: 15),
                           ),
@@ -255,7 +260,7 @@ class _OtpPageState extends State<OtpPage> {
                                 fontWeight: FontWeight.bold,
                               )),
                           Text(
-                            "s",
+                            widget.localization['seconds'] ?? 's',
                             style: TextStyle(
                                 color: widget.accentColor, fontSize: 15),
                           ),

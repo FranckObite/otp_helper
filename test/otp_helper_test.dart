@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:otp_helper/otp_helper.dart';
 import 'package:otp_autofill/otp_autofill.dart';
+import 'package:otp_helper/otp_page.dart';
 
 class MockOTPInteractor extends Mock implements OTPInteractor {
   @override
@@ -31,6 +32,19 @@ void main() {
               print('OTP Code: $code');
             },
             Colors.red, // accentColor
+            () {
+              // Handle resend code
+              print('Resend code');
+            },
+            {
+              'verify_phone': 'Vérifier le téléphone',
+              'code_sent_to': 'Le code a été envoyé à ',
+              'resend_code': 'Vous n\'avez pas reçu le code OTP ?',
+              'resend_button': 'Renvoyer le code',
+              'wait_message': 'Veuillez attendre',
+              'seconds': 's',
+            }, // localization
+            '+225 0757492578', // phoneNumber
           ),
         ),
       ),
@@ -42,6 +56,7 @@ void main() {
     // Verify that the OtpPage displays the correct text.
     expect(find.text('Vérifier le téléphone'), findsOneWidget);
     expect(find.text('Le code a été envoyé à '), findsOneWidget);
+    expect(find.text('+225 0757492578'), findsOneWidget);
 
     // Verify that the OTP input fields are displayed.
     expect(find.byType(TextFormField), findsNWidgets(4));
