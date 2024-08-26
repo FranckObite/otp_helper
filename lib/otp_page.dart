@@ -23,7 +23,8 @@ class OtpPage extends StatefulWidget {
   final Color primaryColor;
   final Color secondaryColor;
   final Color accentColor;
-  final Function(String) onOtpValidated; // Fonction de rappel pour la validation de l'OTP
+  final Function(String)
+      onOtpValidated; // Fonction de rappel pour la validation de l'OTP
   final void Function() resendCode;
   final Map<String, String> localization; // Map pour les traductions
   final String phoneNumber; // Numéro de téléphone
@@ -64,14 +65,16 @@ class _OtpPageState extends State<OtpPage> {
     });
 
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (timeLeft > 0) {
-          timeLeft--;
-        } else {
-          canResendCode = true; // Activer le bouton
-          timer.cancel();
-        }
-      });
+      if (mounted) {
+        setState(() {
+          if (timeLeft > 0) {
+            timeLeft--;
+          } else {
+            canResendCode = true; // Activer le bouton
+            timer.cancel();
+          }
+        });
+      }
     });
   }
 
@@ -153,26 +156,30 @@ class _OtpPageState extends State<OtpPage> {
     focusNode2.dispose();
     focusNode3.dispose();
     focusNode4.dispose();
+    timer.cancel();
+
     super.dispose();
   }
 
   void _onFocusChange(int index) {
-    setState(() {
-      switch (index) {
-        case 1:
-          isEdited1 = controller1.text.isNotEmpty;
-          break;
-        case 2:
-          isEdited2 = controller2.text.isNotEmpty;
-          break;
-        case 3:
-          isEdited3 = controller3.text.isNotEmpty;
-          break;
-        case 4:
-          isEdited4 = controller4.text.isNotEmpty;
-          break;
-      }
-    });
+    if (mounted) {
+      setState(() {
+        switch (index) {
+          case 1:
+            isEdited1 = controller1.text.isNotEmpty;
+            break;
+          case 2:
+            isEdited2 = controller2.text.isNotEmpty;
+            break;
+          case 3:
+            isEdited3 = controller3.text.isNotEmpty;
+            break;
+          case 4:
+            isEdited4 = controller4.text.isNotEmpty;
+            break;
+        }
+      });
+    }
   }
 
   @override
@@ -200,7 +207,8 @@ class _OtpPageState extends State<OtpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget.localization['code_sent_to'] ?? 'The code has been sent to ',
+                widget.localization['code_sent_to'] ??
+                    'The code has been sent to ',
                 style: TextStyle(color: widget.accentColor, fontSize: 15),
               ),
               Text(widget.phoneNumber,
@@ -236,7 +244,8 @@ class _OtpPageState extends State<OtpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget.localization['resend_code'] ?? 'Didn\'t receive the OTP code?',
+                widget.localization['resend_code'] ??
+                    'Didn\'t receive the OTP code?',
                 style: TextStyle(fontSize: 10, color: widget.accentColor),
               ),
               TextButton(
@@ -249,7 +258,8 @@ class _OtpPageState extends State<OtpPage> {
                         )
                       : Row(children: [
                           Text(
-                            widget.localization['wait_message'] ?? 'Please wait',
+                            widget.localization['wait_message'] ??
+                                'Please wait',
                             style: TextStyle(
                                 color: widget.accentColor, fontSize: 15),
                           ),
@@ -314,9 +324,11 @@ class _OtpPageState extends State<OtpPage> {
           counterText: '',
         ),
         onChanged: (value) {
-          setState(() {
-            isEdited = value.isNotEmpty;
-          });
+          if (mounted) {
+            setState(() {
+              isEdited = value.isNotEmpty;
+            });
+          }
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
           }

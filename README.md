@@ -28,7 +28,7 @@ To start using `otp_helper`, add the dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  top_helper: ^1.0.0
+  top_helper: ^0.0.3
 ```
 
 ## Usage
