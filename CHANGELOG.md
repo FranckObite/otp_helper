@@ -2,7 +2,7 @@
 
 ## 0.0.3
 
-- Updating the README.md file
+- Updating the README.md file.
 
 ## 0.0.2
 
