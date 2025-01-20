@@ -1,3 +1,8 @@
+
+## 0.0.9
+
+- Resolved text overflow issue
+
 ## 0.0.8
 
 - Update à resend code
