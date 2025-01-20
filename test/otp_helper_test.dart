@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:otp_helper/otp_helper.dart';
 import 'package:otp_autofill/otp_autofill.dart';
-import 'package:otp_helper/otp_page.dart';
 
 class MockOTPInteractor extends Mock implements OTPInteractor {
   @override

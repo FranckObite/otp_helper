@@ -274,7 +274,7 @@ class _OtpPageState extends State<OtpPage> {
                             widget.localization['wait_message'] ??
                                 'Please wait',
                             style: TextStyle(
-                                color: widget.accentColor, fontSize: 15),
+                                color: widget.primaryColor, fontSize: 15),
                           ),
                           Text(" $timeLeft ",
                               style: TextStyle(
@@ -285,7 +285,7 @@ class _OtpPageState extends State<OtpPage> {
                           Text(
                             widget.localization['seconds'] ?? 's',
                             style: TextStyle(
-                                color: widget.accentColor, fontSize: 15),
+                                color: widget.primaryColor, fontSize: 15),
                           ),
                         ]))
             ],
@@ -344,12 +344,31 @@ class _OtpPageState extends State<OtpPage> {
               isEdited = value.isNotEmpty;
             });
           }
-          if (value.length == 1) {
-            FocusScope.of(context).nextFocus();
-          }
+
+          handleFocusNavigation(value, focusNode!);
           updateCode();
         },
       ),
     );
+  }
+
+  void handleFocusNavigation(String value, FocusNode currentFocusNode) {
+    if (value.length == 1) {
+      // Navigation avant
+      FocusScope.of(context).nextFocus();
+    } else if (value.isEmpty) {
+      // Navigation arrière
+      FocusNode? previousNode = getPreviousFocusNode(currentFocusNode);
+      if (previousNode != null) {
+        FocusScope.of(context).requestFocus(previousNode);
+      }
+    }
+  }
+
+  FocusNode? getPreviousFocusNode(FocusNode currentNode) {
+    if (currentNode == focusNode2) return focusNode1;
+    if (currentNode == focusNode3) return focusNode2;
+    if (currentNode == focusNode4) return focusNode3;
+    return null;
   }
 }

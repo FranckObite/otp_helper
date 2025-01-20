@@ -1,3 +1,8 @@
+## 0.0.6
+
+- Automatic navigation to previous field when deleting
+- A proper visual status update
+
 ## 0.0.5
 
 - Add a new property `resendCodeTextbuttonColor` to customize the color of the resend code text button.
