@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Update the README.md file
+
 ## 0.0.6
 
 - Automatic navigation to previous field when deleting
