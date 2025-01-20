@@ -206,6 +206,8 @@ class _OtpPageState extends State<OtpPage> {
           ),
           Text(
             widget.localization['verify_phone'] ?? 'Verify Phone',
+            softWrap: true,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: widget.titleColor,
                 fontSize: 20,
