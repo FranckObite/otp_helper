@@ -19,7 +19,10 @@ class OtpPage extends StatefulWidget {
       required this.localization,
       required this.phoneNumber,
       required this.resendCodeQuestionColor,
-      required this.codeSentToColor}); // Ajouter le paramètre phoneNumber
+      required this.codeSentToColor,
+      required this.textFieldDesabledColor,
+      required this.resendCodeTextbuttonColor,
+      required this.timeResendCodeColor}); // Ajouter le paramètre phoneNumber
 
   final Color backgroundColor;
   final Color primaryColor;
@@ -27,6 +30,10 @@ class OtpPage extends StatefulWidget {
   final Color accentColor;
   final Color resendCodeQuestionColor;
   final Color codeSentToColor;
+  final Color resendCodeTextbuttonColor;
+  final Color timeResendCodeColor;
+  final Color textFieldDesabledColor;
+
   final Function(String)
       onOtpValidated; // Fonction de rappel pour la validation de l'OTP
   final void Function() resendCode;
@@ -259,7 +266,8 @@ class _OtpPageState extends State<OtpPage> {
                       ? Text(
                           widget.localization['resend_button'] ?? 'Resend Code',
                           style: TextStyle(
-                              fontSize: 15, color: widget.primaryColor),
+                              fontSize: 15,
+                              color: widget.resendCodeTextbuttonColor),
                         )
                       : Row(children: [
                           Text(
@@ -270,7 +278,7 @@ class _OtpPageState extends State<OtpPage> {
                           ),
                           Text(" $timeLeft ",
                               style: TextStyle(
-                                color: widget.primaryColor,
+                                color: widget.timeResendCodeColor,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               )),
@@ -315,7 +323,9 @@ class _OtpPageState extends State<OtpPage> {
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-                color: isEdited ? widget.primaryColor : widget.accentColor),
+                color: isEdited
+                    ? widget.primaryColor
+                    : widget.textFieldDesabledColor),
             borderRadius: const BorderRadius.all(Radius.circular(20)),
           ),
           fillColor: isEdited ? widget.primaryColor : widget.accentColor,

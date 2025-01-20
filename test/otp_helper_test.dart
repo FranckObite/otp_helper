@@ -33,7 +33,10 @@ void main() {
               // Handle OTP validation
               print('OTP Code: $code');
             },
-            Colors.red, // accentColor
+            Colors.red,
+            Colors.black,
+            Colors.pink, //
+            Colors.purple, // accentColor
             () {
               // Handle resend code
               print('Resend code');

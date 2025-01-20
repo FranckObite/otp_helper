@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Add a new property `resendCodeTextbuttonColor` to customize the color of the resend code text button.
+
 ## 0.0.4
 
 - Custumize the color of the question text in the resend code widget.

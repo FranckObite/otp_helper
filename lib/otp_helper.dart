@@ -12,6 +12,9 @@ class OtpHelper {
     Color resendCodeQuestionColor,
     Function(String) onVerification,
     Color accentColor,
+    Color textFieldDesabledColor,
+    Color resendCodeTextbuttonColor,
+    Color timeResendCodeColor,
     void Function() resendCode,
     Map<String, String> localization, // Ajouter la Map pour les traductions
     String phoneNumber, // Ajouter le numéro de téléphone
@@ -27,8 +30,11 @@ class OtpHelper {
           localization, // Passer la Map pour les traductions au widget OtpPage
       phoneNumber: phoneNumber,
       resendCodeQuestionColor: resendCodeQuestionColor,
-      codeSentToColor:
-          codeSentToColor, // Passer le numéro de téléphone au widget OtpPage
+      codeSentToColor: codeSentToColor,
+      textFieldDesabledColor: textFieldDesabledColor,
+      resendCodeTextbuttonColor: resendCodeQuestionColor,
+      timeResendCodeColor:
+          timeResendCodeColor, // Passer le numéro de téléphone au widget OtpPage
     );
   }
 }
