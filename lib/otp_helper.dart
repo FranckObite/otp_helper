@@ -32,7 +32,7 @@ class OtpHelper {
       resendCodeQuestionColor: resendCodeQuestionColor,
       codeSentToColor: codeSentToColor,
       textFieldDesabledColor: textFieldDesabledColor,
-      resendCodeTextbuttonColor: resendCodeQuestionColor,
+      resendCodeTextbuttonColor: resendCodeTextbuttonColor,
       timeResendCodeColor:
           timeResendCodeColor, // Passer le numéro de téléphone au widget OtpPage
     );

@@ -1,3 +1,7 @@
+## 0.0.8
+
+- Update à resend code
+
 ## 0.0.7
 
 - Update the README.md file
