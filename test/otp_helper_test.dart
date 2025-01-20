@@ -26,7 +26,9 @@ void main() {
           body: OtpHelper.showOtpPage(
             Colors.white, // backgroundColor
             Colors.blue, // primaryColor
-            Colors.green, // secondaryColor
+            Colors.green,
+            Colors.black,
+            Colors.red, // secondaryColor
             (code) {
               // Handle OTP validation
               print('OTP Code: $code');

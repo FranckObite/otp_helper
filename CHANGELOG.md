@@ -1,4 +1,6 @@
+## 0.0.4
 
+- Custumize the color of the question text in the resend code widget.
 
 ## 0.0.3
 

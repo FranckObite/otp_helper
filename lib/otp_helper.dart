@@ -7,7 +7,9 @@ class OtpHelper {
   static Widget showOtpPage(
     Color backgroundColor,
     Color primaryColor,
-    Color secondaryColor,
+    Color titleColor,
+    Color codeSentToColor,
+    Color resendCodeQuestionColor,
     Function(String) onVerification,
     Color accentColor,
     void Function() resendCode,
@@ -17,14 +19,16 @@ class OtpHelper {
     return OtpPage(
       backgroundColor: backgroundColor,
       primaryColor: primaryColor,
-      secondaryColor: secondaryColor,
+      titleColor: titleColor,
       onOtpValidated: onVerification,
       accentColor: accentColor,
       resendCode: resendCode,
       localization:
           localization, // Passer la Map pour les traductions au widget OtpPage
-      phoneNumber:
-          phoneNumber, // Passer le numéro de téléphone au widget OtpPage
+      phoneNumber: phoneNumber,
+      resendCodeQuestionColor: resendCodeQuestionColor,
+      codeSentToColor:
+          codeSentToColor, // Passer le numéro de téléphone au widget OtpPage
     );
   }
 }

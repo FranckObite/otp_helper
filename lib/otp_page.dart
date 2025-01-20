@@ -12,17 +12,21 @@ class OtpPage extends StatefulWidget {
       {super.key,
       required this.backgroundColor,
       required this.primaryColor,
-      required this.secondaryColor,
+      required this.titleColor,
       required this.onOtpValidated,
       required this.accentColor,
       required this.resendCode,
       required this.localization,
-      required this.phoneNumber}); // Ajouter le paramètre phoneNumber
+      required this.phoneNumber,
+      required this.resendCodeQuestionColor,
+      required this.codeSentToColor}); // Ajouter le paramètre phoneNumber
 
   final Color backgroundColor;
   final Color primaryColor;
-  final Color secondaryColor;
+  final Color titleColor;
   final Color accentColor;
+  final Color resendCodeQuestionColor;
+  final Color codeSentToColor;
   final Function(String)
       onOtpValidated; // Fonction de rappel pour la validation de l'OTP
   final void Function() resendCode;
@@ -196,7 +200,7 @@ class _OtpPageState extends State<OtpPage> {
           Text(
             widget.localization['verify_phone'] ?? 'Verify Phone',
             style: TextStyle(
-                color: widget.primaryColor,
+                color: widget.titleColor,
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
           ),
@@ -209,10 +213,10 @@ class _OtpPageState extends State<OtpPage> {
               Text(
                 widget.localization['code_sent_to'] ??
                     'The code has been sent to ',
-                style: TextStyle(color: widget.accentColor, fontSize: 15),
+                style: TextStyle(color: widget.codeSentToColor, fontSize: 15),
               ),
               Text(widget.phoneNumber,
-                  style: TextStyle(color: widget.accentColor, fontSize: 15))
+                  style: TextStyle(color: widget.codeSentToColor, fontSize: 15))
             ],
           ),
           const SizedBox(
@@ -246,7 +250,8 @@ class _OtpPageState extends State<OtpPage> {
               Text(
                 widget.localization['resend_code'] ??
                     'Didn\'t receive the OTP code?',
-                style: TextStyle(fontSize: 10, color: widget.accentColor),
+                style: TextStyle(
+                    fontSize: 10, color: widget.resendCodeQuestionColor),
               ),
               TextButton(
                   onPressed: canResendCode ? widget.resendCode : null,
